@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Game</title>
+		<style type="text/css">
+			canvas {
+				border-style : solid;
+				border-color : black;
+			}
+
+			#columns {
+				width: 600px;				
+			}
+
+			#columns .column {
+				position: relative;
+				width: 46%;
+				padding: 1%;
+			}
+
+			#columns .left {
+				float: left;
+			}
+
+			#columns .right {
+				float: right;
+			}
+		</style>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.js" ></script>
+		<script type="text/javascript" src="game.js"></script>		
+	</head>
+	<body>		
+		<canvas id="canvas" width="600" height="400"> </canvas>
+		
+		<div id="columns">
+			<div class="left column">
+				<p style="color:red">RED</p>
+				<p>UP &rarr; W</p>
+				<p>DOWN &rarr; S</p>
+			</div>			
+			<div class="right column">
+				<p style="color:green">GREEN</p>
+				<p>UP &rarr; UP ARROW</p>
+				<p>DOWN &rarr; DOWN ARROW</p>
+			</div>
+		</div>
+		
+	</body>	
+</html>
