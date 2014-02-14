@@ -1,4 +1,4 @@
 HTML5-Canvas-Lab
 ================
 
-A simple application of HTML5 canvas
+A pong game clone using HTML5 canvas
