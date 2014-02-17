@@ -6,6 +6,7 @@
 		game.WIDTH = game.canvas.width();		// screen width
 		game.HEIGHT = game.canvas.height();	// screen height		
 		
+		game.objects.init();
 		game.input.registerListeners();
 		
 		game.cycle = function() {

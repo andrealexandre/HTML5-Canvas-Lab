@@ -39,9 +39,9 @@ game.draw = function() {
 	ctx.fillStyle = "rgb(0,0,0)";
 	ctx.clearRect(0, 0, WIDTH, HEIGHT);
 	
-	drawBall(game.ball);
-	drawBar(game.bar_left);
-	drawBar(game.bar_right);
-	drawScoreBoard(game.score_board);
-	drawSpeed(game.ball);
+	drawBall(game.objects.ball);
+	drawBar(game.objects.bar_left);
+	drawBar(game.objects.bar_right);
+	drawScoreBoard(game.objects.score_board);
+	drawSpeed(game.objects.ball);
 };

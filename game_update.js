@@ -16,14 +16,14 @@ game.update = function() {
 			
 			ball.direction.dx = 
 				ball.direction.dx < 0 ?
-				-ballBaseSpeed : ballBaseSpeed;
+				-game.ballBaseSpeed : game.ballBaseSpeed;
 				
 			ball.direction.dy = 
 				ball.direction.dy < 0 ?
-				-ballBaseSpeed : ballBaseSpeed;
+				-game.ballBaseSpeed : game.ballBaseSpeed;
 			
-			if(xleft < 0) score_board.right++;
-			else score_board.left++;
+			if(xleft < 0) game.objects.score_board.right++;
+			else game.objects.score_board.left++;
 		}
 		
 		var y = ball.position.y + ball.direction.dy;
@@ -45,9 +45,9 @@ game.update = function() {
 		bar.position.y += bar.direction.dy;
 	}
 	
-	moveBall(game.ball);
-	moveBar(game.bar_left);
-	moveBar(game.bar_right);
+	moveBall(game.objects.ball);
+	moveBar(game.objects.bar_left);
+	moveBar(game.objects.bar_right);
 	
 	// collision
 	var detect_collision = function(bar, ball) {
@@ -69,12 +69,12 @@ game.update = function() {
 			!collision) {
 			ball.direction.dx = -ball.direction.dx;
 			collision = true;
-			ball.direction.dx *= ballSpeedIncreaseFactor;
-			ball.direction.dy *= ballSpeedIncreaseFactor;
+			ball.direction.dx *= game.ballSpeedIncreaseFactor;
+			ball.direction.dy *= game.ballSpeedIncreaseFactor;
 		}
 		else collision = false;				
 	}
 	
-	detect_collision(game.bar_left, game.ball);
-	detect_collision(game.bar_right, game.ball);
+	detect_collision(game.objects.bar_left, game.objects.ball);
+	detect_collision(game.objects.bar_right, game.objects.ball);
 };
