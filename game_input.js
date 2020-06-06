@@ -15,12 +15,12 @@ game.input = {
 	},
 	
 	registerListeners : function() {
-		$(document.body).keyup(function(e) {
+		document.body.addEventListener('keyup', function(e) {
 			e.preventDefault();			
 			if(game.input.keyHandler.keyUp[e.keyCode])
 				game.input.keyHandler.keyUp[e.keyCode]();
 		});
-		$(document.body).keydown(function(e) {
+		document.body.addEventListener('keydown', function(e) {
 			e.preventDefault();
 			if(game.input.keyHandler.keyDown[e.keyCode])
 				game.input.keyHandler.keyDown[e.keyCode]();
