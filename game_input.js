@@ -1,29 +1,41 @@
 game.input = {
 	keyHandler : {
 		keyUp : {
-			38 : function() { game.objects.bar_right.direction.dy = 0; },	//UP
-			40 : function() { game.objects.bar_right.direction.dy = 0; },	//DOWN
-			83 : function() { game.objects.bar_left.direction.dy = 0; },	// S
-			87 : function() { game.objects.bar_left.direction.dy = 0; }	// W
+			"ArrowUp" : (handle) => handle(game.objects.bar_right, 0),
+			"ArrowDown" : (handle) => handle(game.objects.bar_right, 0),
+			"w" : (handle) => handle(game.objects.bar_left, 0),
+			"s" : (handle) => handle(game.objects.bar_left, 0)
 		},	
 		keyDown : {
-			38 : function() { game.objects.bar_right.direction.dy = -game.velocityIncrement; },	//UP			
-			40 : function() { game.objects.bar_right.direction.dy = +game.velocityIncrement; },	//DOWN
-			83 : function() { game.objects.bar_left.direction.dy = +game.velocityIncrement; },	// S
-			87 : function() { game.objects.bar_left.direction.dy = -game.velocityIncrement; }	// W
+			"ArrowUp" : (handle) => handle(game.objects.bar_right, -game.velocityIncrement),
+			"ArrowDown" : (handle) => handle(game.objects.bar_right, +game.velocityIncrement),
+			"w" : (handle) => handle(game.objects.bar_left, -game.velocityIncrement),
+			"s" : (handle) => handle(game.objects.bar_left, +game.velocityIncrement)
 		}
 	},
 	
-	registerListeners : function() {
-		document.body.addEventListener('keyup', function(e) {
-			e.preventDefault();			
-			if(game.input.keyHandler.keyUp[e.keyCode])
-				game.input.keyHandler.keyUp[e.keyCode]();
+	registerListeners : () => {
+		document.body.addEventListener('keyup', (event) => {
+			if (game.input.keyHandler.keyUp[event.key]) {
+				game.input.keyHandler.keyUp[event.key]((bar, dy) => {
+					if (event.key == bar.keyDown) {
+						bar.direction.dy = dy;
+						bar.keyDown = null;
+					}
+				});
+				e.preventDefault();
+			}
 		});
-		document.body.addEventListener('keydown', function(e) {
-			e.preventDefault();
-			if(game.input.keyHandler.keyDown[e.keyCode])
-				game.input.keyHandler.keyDown[e.keyCode]();
+		document.body.addEventListener('keydown', (event) => {
+			if (game.input.keyHandler.keyDown[event.key]) {
+				game.input.keyHandler.keyDown[event.key]((bar, dy) => {
+					if (!bar.keyDown) {
+						bar.keyDown = event.key;
+						bar.direction.dy = dy;
+					}
+				});
+				e.preventDefault();
+			}
 		});
 	}
 };

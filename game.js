@@ -9,9 +9,17 @@ window.addEventListener('load', function() {
 	game.input.registerListeners();
 	
 	game.cycle = function() {
-		game.draw();
-		game.update();
+		game.stopMain = window.requestAnimationFrame(game.cycle);
+		
+		let start = performance.now()
+
+		game.update()
+		game.draw()
+		
+		let duration = performance.now() - start
+		game.metrics.frameTime = duration
+		game.metrics.framePerSecond = 1000 / duration
 	};
 	
-	setInterval(game.cycle, 10); //Start Drawing
+	game.cycle();
 });

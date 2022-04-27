@@ -14,7 +14,8 @@ game = {
 				height : 80,
 				position : { x : 25, y : 100 },
 				direction : { dx : 0, dy : 0},
-				color : "rgb(200,0,0)"
+				color : "rgb(200,0,0)",
+				keyDown: null
 			};
 			
 			game.objects.bar_right = {
@@ -22,7 +23,8 @@ game = {
 				height : 80,
 				position : { x : (game.WIDTH - (25 + 15)), y : 100 },
 				direction : { dx : 0, dy : 0},
-				color : "rgb(0,200,0)"
+				color : "rgb(0,200,0)",
+				keyDown: null
 			};
 			
 			game.objects.ball = {
@@ -37,6 +39,11 @@ game = {
 				right : 0,
 				font : "30px Arial"
 			};
+
+			game.metrics = {
+				frameTime: 0,
+				framePerSecond: 0
+			}
 			
 		}
 	}
